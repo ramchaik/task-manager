@@ -14,51 +14,57 @@ MongoClient.connect(
 
     const db = client.db(databaseName);
 
-    /* db.collection('users').findOne(
-      { _id: new ObjectID('5d6d245786f2073853e42543') },
-      (error, user) => {
-        if (error) {
-          return console.log('Unable to fetch');
+    /* db.collection('users')
+      .updateOne(
+        {
+          _id: new ObjectID('5d6d06e1c8668561c9ab61a1')
+        },
+        {
+          $inc: {
+            age: -1
+          }
         }
-
-        console.log(user);
-      }
-    ); */
-
-    /*  db.collection('users')
-      .find({ age: 23 })
-      .toArray((error, users) => {
-        if (error) {
-          return console.log('Unable to fetch users.');
-        }
-        console.log(users);
+      )
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.log(error);
       });
 
-    db.collection('users')
-      .find({ age: 23 })
-      .count((error, count) => {
-        if (error) {
-          return console.log('Unable to fetch.');
-        }
-        console.log(count);
-      }); */
-    db.collection('tasks').findOne(
-      { _id: new ObjectID('5d6d1fac50ce6c293aff2888') },
-      (error, task) => {
-        if (error) {
-          return console.log('Unable to fetch');
-        }
-        console.log('task-->', task);
-      }
-    );
-
     db.collection('tasks')
-      .find({ completed: false })
-      .toArray((error, tasks) => {
-        if (error) {
-          return console.log('Unable to fetch');
+      .updateMany(
+        { completed: false },
+        {
+          $set: {
+            completed: true
+          }
         }
-        console.log('tasks -->', tasks);
+      )
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+   */
+    /* db.collection('users').deleteMany({
+    age: 26
+  }).then((res) => {
+    console.log(res);
+  }).catch((error) => {
+    console.log(error);
+  });
+   */
+    db.collection('tasks')
+      .deleteOne({
+        description: 'Get groceries.'
+      })
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.log(error);
       });
   }
 );
