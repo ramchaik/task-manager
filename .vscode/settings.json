@@ -5,6 +5,7 @@
     "javascript": "javascriptreact"
   },
   "editor.wordWrap": "on",
+  "window.zoomLevel": 0.15,
   "workbench.iconTheme": "vscode-icons",
   "editor.tabSize": 2,
   "[javascriptreact]": {
@@ -15,14 +16,14 @@
   },
   "prettier.singleQuote": true,
   "terminal.integrated.fontFamily": "Fira Code",
-  "terminal.integrated.fontSize": 13,
+  "terminal.integrated.fontSize": 12,
   "workbench.sideBar.location": "left",
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
   "editor.minimap.enabled": false,
   "liveServer.settings.donotShowInfoMsg": true,
   "workbench.colorTheme": "Night Owl",
-  "editor.fontSize": 15,
+  "editor.fontSize": 14,
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "editor.renderWhitespace": "boundary",
@@ -37,6 +38,6 @@
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "terminal.integrated.shell.osx": "/bin/zsh",
-  "debug.node.autoAttach": "on",
-  "window.zoomLevel": 0.15
+  "debug.node.autoAttach": "off",
+
 }
