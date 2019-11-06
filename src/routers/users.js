@@ -98,7 +98,17 @@ router.delete('/users/me', auth, async (req, res) => {
 });
 
 const upload = multer({
-	dest: 'avatar'
+	dest: 'avatar',
+	limits: {
+		fileSize: 1000000
+	},
+	fileFilter(req, file, cb) {
+		if (!file.originalname.match(/\.(doc|docx)$/)) {
+			return cb(new Error('Please upload a Word document'));
+		}
+
+		cb(undefined, true);
+	}
 });
 
 router.post('/user/me/avatar', upload.single('avatar'), (req, res) => {
