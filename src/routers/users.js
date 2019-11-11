@@ -98,21 +98,30 @@ router.delete('/users/me', auth, async (req, res) => {
 });
 
 const upload = multer({
-	dest: 'avatar',
 	limits: {
 		fileSize: 1000000
 	},
 	fileFilter(req, file, cb) {
-		if (!file.originalname.match(/\.(doc|docx)$/)) {
-			return cb(new Error('Please upload a Word document'));
+		if (!file.originalname.match(/\.(jp(e)?|pn)g$/)) {
+			return cb(new Error('Please upload an image.'));
 		}
 
 		cb(undefined, true);
 	}
 });
 
-router.post('/user/me/avatar', upload.single('avatar'), (req, res) => {
+router.post('/user/me/avatar', auth, upload.single('avatar'), async (req, res) => {
+	req.user.avatar = req.file.buffer;
+	await req.user.save();
 	res.send();
+}, (error, req, res, next) => {
+	res.status(400).send({ error: error.message });
 });
+
+router.delete('/user/me/avatar', auth, async (req, res) => {
+	req.user.avatar = undefined;
+	await req.user.save();
+	res.send();
+})
 
 module.exports = router;
