@@ -33,5 +33,10 @@
 	"debug.node.autoAttach": "off",
 	"editor.insertSpaces": true,
 	"editor.tabSize": 4,
-	"editor.detectIndentation": true
+	"editor.detectIndentation": true,
+    "workbench.colorCustomizations": {
+        "terminal.foreground": "#839495",
+        "terminal.background": "#003440"
+    }
+}
 }
